@@ -1,0 +1,66 @@
+# This is the docker-compose-yml file that must be able to start
+# your group's backend.
+
+# Remember to comment this file well!
+
+# After you have Docker and Docker Compose installed,
+# and this file is ready, you use this file and run it with:
+# `docker-compose up --build`
+
+version: "3"
+
+services:
+
+  orig:
+    depends_on:
+      -  rapid-runner-rabbit
+    command: ["rapid-runner-rabbit:5672", "--",  "node", "main.js"]
+    build:
+      dockerfile: Dockerfile
+      context:  ./ORIG
+    ports:
+      - "3000:8080" #host, container
+    networks:
+      - lassenet
+
+  obse:
+    depends_on:
+      -  rapid-runner-rabbit
+    command: ["rapid-runner-rabbit:5672", "--",  "node", "obse.js"]
+    build:
+      dockerfile: Dockerfile
+      context:  ./ORIG
+    ports:
+      - "3000:8080" #host, container
+    networks:
+      - lassenet
+
+
+  rapid-runner-rabbit:
+    image: rabbitmq:3-management
+    expose:
+      - "5672"
+    networks:
+      - lassenet
+
+  # much of the server-b service entry can be copied from server-a
+  # service above. server-b directory Dockerfile has more
+  # information.
+  # A set of needed Docker instructions like 'image:' are shown
+  # below, groups should set their values. Groups are free to
+  # CRUD this set of instructions as they see fit.
+  server-b:
+    depends_on:
+      -  rapid-runner-rabbit
+    command: [ "rapid-runner-rabbit:5672", "--",  "node", "index.js"]
+    build:
+      dockerfile: Dockerfile
+      context:  ./backend/server-b
+    expose:
+      - "8090"
+    networks:
+      - lassenet
+
+networks:
+  lassenet:
+

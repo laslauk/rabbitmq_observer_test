@@ -22,7 +22,7 @@ amqp.connect('amqp://localhost', function(error0, connection) {
     // TiMeOuT wItH JaVaScRipT :s
     var i = 0, maxCount = 3;
       function f() {
-        var msg = "MSG_" + i+1;
+        var msg = "MSG_" + (i+1);
         channel.publish(exchange, '', Buffer.from(msg));
         console.log(" [x] Sent %s", msg);
         i++;

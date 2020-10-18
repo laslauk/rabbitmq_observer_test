@@ -2,6 +2,7 @@
 
 const fs = require('fs')
 const path = '/usr/src/app/messages.txt'
+
 setTimeout(function () {
 try {
   fs.unlinkSync(path)

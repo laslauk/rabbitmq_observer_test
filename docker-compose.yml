@@ -49,13 +49,13 @@ services:
   # A set of needed Docker instructions like 'image:' are shown
   # below, groups should set their values. Groups are free to
   # CRUD this set of instructions as they see fit.
-  server-b:
+  imed:
     depends_on:
       -  rapid-runner-rabbit
     command: [ "rapid-runner-rabbit:5672", "--",  "node", "index.js"]
     build:
       dockerfile: Dockerfile
-      context:  ./backend/server-b
+      context:  ./IMED
     expose:
       - "8090"
     networks:

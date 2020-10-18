@@ -48,4 +48,4 @@ amqp.connect('amqp://localhost', function(error0, connection) {
   });
 });
 
- }, 10000);
+ }, 20000);

@@ -14,8 +14,8 @@ http.createServer(function (req, res) {
         msg = data;
           }   
 
-          res.writeHead(200, {'Content-Type': 'text/html'});
-          res.write(msg);
+          res.writeHead(200, {'Content-Type': 'text/plain'});
+          res.write(msg.toString());
           res.end();
 
       });

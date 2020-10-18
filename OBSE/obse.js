@@ -1,5 +1,14 @@
 #!/usr/bin/env node
 
+const fs = require('fs')
+const path = './messages.txt'
+
+try {
+  fs.unlinkSync(path)
+} catch(err) {
+  console.error(err)
+}
+
 var amqp = require('amqplib/callback_api');
 
 amqp.connect('amqp://localhost', function(error0, connection) {
@@ -28,12 +37,20 @@ amqp.connect('amqp://localhost', function(error0, connection) {
       channel.bindQueue(q.queue, exchange, key);
 
       channel.consume(q.queue, function(msg) {
-       console.log("Consumed a message:  " + msg.toString() + " \n from my.o - publishing to my.i")
+       console.log("Consumed a message:  from my.o - publishing to my.i")
 
        fs = require('fs');
-       fs.writeFile('messages.txt', msg.toString(), function (err) {
+
+       let timestamp = new Date().valueOf();
+       let topic = key;
+       let message = msg;
+       var text =  `${timestamp} Topic ${topic}: ${message}` 
+
+       fs.appendFile('messages.txt', text, function (err) {
          if (err) return console.log(err);
-         console.log(msg.toString() + " > messages.txt");
+        
+
+         console.log("Written to messages.txt");
        });
 
       

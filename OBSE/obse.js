@@ -42,7 +42,7 @@ amqp.connect('amqp://localhost', function(error0, connection) {
 
        let timestamp = new Date().toISOString();
        let topic = key.toString();
-       let message = msg.toString();
+       let message = msg.content.toString();
        var text =  `${timestamp} Topic ${topic}: ${message} \n` 
 
        fs.appendFile('messages.txt', text, function (err) {

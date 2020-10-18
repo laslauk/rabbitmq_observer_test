@@ -3,7 +3,6 @@
 version: "3"
 
 services:
-
   orig:
     depends_on:
       -  rapid-runner-rabbit

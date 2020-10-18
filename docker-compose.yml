@@ -11,7 +11,7 @@ services:
     command: ["node", "main.js"]
     build:
       dockerfile: Dockerfile
-      context:  ./ORIG
+      context: ./ORIG
     networks:
       - lassenet
 

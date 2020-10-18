@@ -10,5 +10,5 @@ RUN npm install
 COPY . .
 
 EXPOSE 8894
-ENTRYPOINT ["/bin/bash"]
+
 CMD [ "node", "index.js"  ]

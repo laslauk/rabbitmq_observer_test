@@ -11,6 +11,5 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 8080
 ENTRYPOINT ["/bin/bash"]
 CMD [ "node", "main.js"  ]

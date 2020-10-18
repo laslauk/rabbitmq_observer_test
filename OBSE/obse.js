@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs')
-const path = './messages.txt'
+const path = './OBSE/messages.txt'
 
 try {
   fs.unlinkSync(path)
@@ -40,9 +40,10 @@ amqp.connect('amqp://localhost', function(error0, connection) {
       channel.consume(q.queue, function(msg) {
        console.log("Consumed a message - writing to file")
 
+   
        let timestamp = new Date().toISOString();
-       let topic = q.queue.toString();
-       let message = msg.content.toString().toString();
+       let topic = msg.fields.routingKey.toString();
+       let message = msg.content.toString();
        var text =  `${timestamp} Topic ${topic}: ${message} \n` 
 
        fs.appendFile('messages.txt', text, function (err) {

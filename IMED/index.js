@@ -32,7 +32,7 @@ amqp.connect('amqp://localhost', function(error0, connection) {
 
 
        setTimeout(function() {
-        var new_msg = "Got " + msg.toString();
+        var new_msg = "Got " + msg.content.toString();
         key = "my.i"
         channel.publish(exchange, key, Buffer.from(new_msg));
        }, 1000)

@@ -34,7 +34,7 @@ services:
     networks:
       - lassenet
     volumes:
-      - datavolume:/usr/src/app/
+      - datavolume:/usr/src/app/stuff/
 
 
   httpserv:

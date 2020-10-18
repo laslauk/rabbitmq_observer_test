@@ -2,7 +2,7 @@
 
 var amqp = require('amqplib/callback_api');
 
-console.log("waiting 6 seconds before starting the sending..")
+console.log("waiting 25 seconds before starting the sending..")
  setTimeout(function() {
 
 
@@ -48,4 +48,4 @@ amqp.connect('amqp://localhost', function(error0, connection) {
   });
 });
 
- }, 20000);
+ }, 25000);

@@ -34,7 +34,7 @@ services:
     networks:
       - lassenet
     volumes:
-      - .:/usr/src/app/
+      - datavolume:/usr/src/app/
 
 
   httpserv:
@@ -52,8 +52,7 @@ services:
       - lassenet
 
     volumes:
-      - .:/usr/src/app/
-      - node_mods:/usr/src/app/node_modules
+      - datavolume:/usr/src/app/
 
 
 
@@ -71,4 +70,4 @@ networks:
   lassenet:
 
 volumes:
-  node_mods:
+  datavolume:

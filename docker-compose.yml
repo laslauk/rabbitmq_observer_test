@@ -11,8 +11,13 @@ services:
       - "5672"
     networks:
       - lassenet
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "5672" ]
+      interval: 5s
+      timeout: 15s
+      retries: 1
 
-      
+
   orig:
     depends_on:
       -  rapid-runner-rabbit

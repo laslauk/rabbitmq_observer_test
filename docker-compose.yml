@@ -33,8 +33,7 @@ services:
       context:  ./OBSE
     networks:
       - lassenet
-    volumes:
-      - data-volume:/usr/src/app
+
 
   httpserv:
 

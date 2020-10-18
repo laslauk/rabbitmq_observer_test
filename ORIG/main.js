@@ -28,14 +28,18 @@ amqp.connect('amqp://localhost', function(error0, connection) {
         i++;
         if (i < maxCount) {
           setTimeout(f, 3000);
+        } else {
+          
+          setTimeout(function() { 
+            connection.close(); 
+            process.exit(0); 
+          }, 500);
+
         }
       }
 
     f();
   });
 
-  setTimeout(function() { 
-    connection.close(); 
-    process.exit(0); 
-  }, 500);
+
 });

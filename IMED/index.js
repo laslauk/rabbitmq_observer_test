@@ -28,9 +28,11 @@ amqp.connect('amqp://localhost', function(error0, connection) {
       channel.bindQueue(q.queue, exchange, key);
 
       channel.consume(q.queue, function(msg) {
-        console.log("Consumed a message  from my.o")
+       console.log("Consumed a message:  " + msg + " \n from my.o - publishing to my.i")
 
-        
+       key = "my.i"
+       channel.publish(exchange, key, Buffer.from(msg));
+
       
       }, {
         noAck: true

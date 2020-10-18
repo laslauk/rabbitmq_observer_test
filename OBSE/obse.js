@@ -10,9 +10,9 @@ amqp.connect('amqp://localhost', function(error0, connection) {
     if (error1) {
       throw error1;
     }
-    var exchange = 'logs';
+    var exchange = 'topic_logs';
 
-    channel.assertExchange(exchange, 'fanout', {
+    channel.assertExchange(exchange, 'topic', {
       durable: false
     });
 
@@ -22,13 +22,21 @@ amqp.connect('amqp://localhost', function(error0, connection) {
       if (error2) {
         throw error2;
       }
-      console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q.queue);
-      channel.bindQueue(q.queue, exchange, '');
+      console.log(' [*] Waiting for logs from my.i and my.o. To exit press CTRL+C');
+
+      var key = "#";
+      channel.bindQueue(q.queue, exchange, key);
 
       channel.consume(q.queue, function(msg) {
-        if(msg.content) {
-            console.log(" [x] %s", msg.content.toString());
-          }
+       console.log("Consumed a message:  " + msg + " \n from my.o - publishing to my.i")
+
+       fs = require('fs');
+       fs.writeFile('messages.txt', msg, function (err) {
+         if (err) return console.log(err);
+         console.log(msg + " > messages.txt");
+       });
+
+      
       }, {
         noAck: true
       });

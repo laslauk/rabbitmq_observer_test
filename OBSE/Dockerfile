@@ -12,6 +12,6 @@ RUN npm install
 # Bundle app source
 COPY . /usr/src/app
 
-RUN ["chmod", "+x", "/usr/src/app/utils/wait-for-it.sh"]
+RUN ["chmod", "+x", "./utils/wait-for-it.sh"]
 ENTRYPOINT ["/bin/bash"]
 CMD [ "node", "obse.js"  ]

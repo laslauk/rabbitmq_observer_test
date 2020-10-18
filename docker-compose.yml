@@ -15,7 +15,7 @@ services:
     depends_on:
       -  rapid-runner-rabbit
       -  obse
-      -  orig
+      -  imed
     command: ["node", "main.js"]
     build:
       dockerfile: Dockerfile

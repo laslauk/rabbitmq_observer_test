@@ -3,7 +3,7 @@
 var amqp = require('amqplib/callback_api');
 
 console.log("waiting 6 seconds before starting the sending..")
- // setTimeout(function() {
+ setTimeout(function() {
 
 
 amqp.connect('amqp://localhost', function(error0, connection) {
@@ -48,4 +48,4 @@ amqp.connect('amqp://localhost', function(error0, connection) {
   });
 });
 
-// });
+ });

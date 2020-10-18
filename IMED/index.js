@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var amqp = require('amqplib/callback_api');
-
+setTimeout(function() {
 amqp.connect('amqp://localhost', function(error0, connection) {
   if (error0) {
     throw error0;
@@ -45,3 +45,4 @@ amqp.connect('amqp://localhost', function(error0, connection) {
     });
   });
 });
+}, 5000);

@@ -39,8 +39,6 @@ amqp.connect('amqp://localhost', function(error0, connection) {
       channel.consume(q.queue, function(msg) {
        console.log("Consumed a message:  from my.o - publishing to my.i")
 
-       fs = require('fs');
-
        let timestamp = new Date().valueOf();
        let topic = key;
        let message = msg;

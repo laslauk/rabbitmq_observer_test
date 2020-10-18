@@ -3,7 +3,7 @@
 const fs = require('fs')
 const path = '/usr/src/app/messages.txt'
 
-setTimeout(function () {
+
 try {
   fs.unlinkSync(path)
   console.log("messages.txt cleared")
@@ -59,4 +59,4 @@ amqp.connect('amqp://rapid-runner-rabbit', function(error0, connection) {
     });
   });
 });
-},30000)
+

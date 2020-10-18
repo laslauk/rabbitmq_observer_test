@@ -2,7 +2,7 @@
 
 var amqp = require('amqplib/callback_api');
 
-setTimeout(function() {
+
 
 
 amqp.connect('amqp://rapid-runner-rabbit', function(error0, connection) {
@@ -48,4 +48,3 @@ amqp.connect('amqp://rapid-runner-rabbit', function(error0, connection) {
     });
   });
 });
-}, 30000)

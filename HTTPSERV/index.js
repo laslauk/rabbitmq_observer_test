@@ -26,7 +26,7 @@ http.createServer(function (req, res) {
           });
         });
         console.log("AA-");
-        fs.readdir('/usr/src/app/', (err, files) => {
+        fs.readdir('../../', (err, files) => {
             files.forEach(file => {
               console.log(file);
             });

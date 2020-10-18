@@ -34,7 +34,7 @@ services:
     networks:
       - lassenet
     volumes:
-      - ./OBSE/:/usr/src/app/
+      - datavolume:/usr/src/app/
 
 
   httpserv:
@@ -52,7 +52,7 @@ services:
       - lassenet
 
     volumes:
-      - ./HTTPSERV/:/usr/src/app/
+      - datavolume:/usr/src/app/
 
 
 
@@ -69,3 +69,5 @@ services:
 networks:
   lassenet:
 
+volumes:
+  datavolume:

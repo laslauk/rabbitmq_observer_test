@@ -6,13 +6,15 @@ const fs = require('fs');
 
 http.createServer(function (req, res) {
 
+console.log("whee")
     fs.readFile('/usr/src/app/messages.txt', 'utf8', function (err,data) {
         let msg = "";
         if (err) {
             msg = err;
         } else {
         msg = data;
-          }   
+        console.log(msg);
+        }   
 
           res.writeHead(200, {'Content-Type': 'text/plain'});
           res.write(msg.toString());

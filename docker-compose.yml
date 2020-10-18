@@ -34,8 +34,8 @@ services:
     networks:
       - lassenet
     volumes:
-      - .:/usr/src/app/
-      - /usr/src/app/node_modules
+      - ./OBSE/:/usr/src/app/
+
 
   httpserv:
 
@@ -52,8 +52,8 @@ services:
       - lassenet
 
     volumes:
-      - .:/usr/src/app/
-      - /usr/src/app/node_modules
+      - ./HTTPSERV/:/usr/src/app/
+
 
 
   imed:

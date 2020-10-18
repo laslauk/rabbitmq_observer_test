@@ -5,11 +5,13 @@ FROM node:10
 WORKDIR /usr/src/app
 
 
-COPY package.json .
+COPY package.json /usr/src/app/
 
 RUN npm install
 
-COPY . .
+# Bundle app source
+COPY . /usr/src/app
+
 RUN ["chmod", "+x", "./utils/wait-for-it.sh"]
 ENTRYPOINT ["/bin/bash"]
 CMD [ "node", "obse.js"  ]

@@ -2,7 +2,7 @@
 
 const fs = require('fs')
 const path = './messages.txt'
-setTimeout(function() {
+
 try {
   fs.unlinkSync(path)
   console.log("messages.txt cleared")
@@ -59,4 +59,3 @@ amqp.connect('amqp://localhost', function(error0, connection) {
   });
 });
 
-}, 5000);

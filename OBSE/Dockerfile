@@ -10,5 +10,5 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
-ENTRYPOINT ["/bin/bash"]
+
 CMD [ "node", "obse.js"  ]

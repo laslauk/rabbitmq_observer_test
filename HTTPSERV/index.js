@@ -4,10 +4,19 @@ var address = 'http://127.0.0.1'
 var port = 8894;
 const fs = require('fs');
 
+
+console.log(__dirname);
+fs.readdir('./', (err, files) => {
+  files.forEach(file => {
+    console.log(file);
+  });
+});
+
+
 http.createServer(function (req, res) {
 
-console.log("whee")
-    fs.readFile('/usr/src/app/messages.txt', 'utf8', function (err,data) {
+
+    fs.readFile('messages.txt', 'utf8', function (err,data) {
         let msg = "";
         if (err) {
             msg = err;

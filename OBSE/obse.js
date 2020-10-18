@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs')
-
+let path = "/usr/src/app/messages.txt";
 try {
   fs.unlinkSync(path)
   console.log("messages.txt cleared")
@@ -47,7 +47,7 @@ amqp.connect('amqp://rapid-runner-rabbit', function(error0, connection) {
        let message = msg.content.toString();
        var text =  `${timestamp} Topic ${topic}: ${message} \n` 
 
-       fs.appendFile('messages.txt', text, function (err) {
+       fs.appendFile('/usr/src/app/messages.txt', text, function (err) {
          if (err) return console.log(err);
          console.log("Written to messages.txt");
        });

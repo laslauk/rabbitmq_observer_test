@@ -4,7 +4,6 @@ var amqp = require('amqplib/callback_api');
 
 
 
-
 amqp.connect('amqp://rapid-runner-rabbit', function(error0, connection) {
   if (error0) {
     throw error0;

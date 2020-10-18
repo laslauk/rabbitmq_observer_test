@@ -5,12 +5,6 @@ var port = 8894;
 const fs = require('fs');
 
 
-console.log(__dirname);
-fs.readdir('./', (err, files) => {
-  files.forEach(file => {
-    console.log(file);
-  });
-});
 
 
 http.createServer(function (req, res) {
@@ -24,6 +18,21 @@ http.createServer(function (req, res) {
         msg = data;
         console.log(msg);
         }   
+
+        console.log(__dirname);
+        fs.readdir('./', (err, files) => {
+          files.forEach(file => {
+            console.log(file);
+          });
+        });
+        console.log("AA-");
+        fs.readdir('/usr/src/app/', (err, files) => {
+            files.forEach(file => {
+              console.log(file);
+            });
+          });
+        
+     
 
           res.writeHead(200, {'Content-Type': 'text/plain'});
           res.write(msg.toString());

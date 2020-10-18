@@ -1,13 +1,6 @@
 #!/usr/bin/env node
 
 const fs = require('fs')
-const path = 'messages.txt'
-console.log(__dirname);
-fs.readdir('./', (err, files) => {
-  files.forEach(file => {
-    console.log(file);
-  });
-});
 
 try {
   fs.unlinkSync(path)
@@ -17,6 +10,8 @@ try {
 }
 
 var amqp = require('amqplib/callback_api');
+
+setTimeout(function() {
 
 amqp.connect('amqp://rapid-runner-rabbit', function(error0, connection) {
   if (error0) {
@@ -65,3 +60,4 @@ amqp.connect('amqp://rapid-runner-rabbit', function(error0, connection) {
   });
 });
 
+}, 15000)

@@ -20,16 +20,16 @@ amqp.connect('amqp://localhost', function(error0, connection) {
     });
 
     // TiMeOuT wItH JaVaScRipT :s
-    var i = 0, maxCount = 2;
+    var i = 0, maxCount = 3;
       function f() {
-        var msg = "MSG_ " + i;
+        var msg = "MSG_" + i+1;
         channel.publish(exchange, '', Buffer.from(msg));
         console.log(" [x] Sent %s", msg);
         i++;
         if (i < maxCount) {
           setTimeout(f, 3000);
         } else {
-          
+
           setTimeout(function() { 
             connection.close(); 
             process.exit(0); 

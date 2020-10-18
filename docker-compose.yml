@@ -68,4 +68,4 @@ networks:
   lassenet:
 
 volumes:
-    data-volume: 
+    data-volume:

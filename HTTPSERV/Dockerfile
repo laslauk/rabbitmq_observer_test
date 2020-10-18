@@ -1,7 +1,7 @@
 
 FROM node:10
 
-WORKDIR /usr/src/app
+WORKDIR /httpserv
 
 #COPY package*.json ./
 
@@ -11,12 +11,12 @@ WORKDIR /usr/src/app
 
 
 
-COPY package.json /usr/src/app/
+COPY package.json /httpserv/
 
 RUN npm install
 
 # Bundle app source
-COPY . /usr/src/app
+COPY . /httpserv/
 
 EXPOSE 8894
 RUN ["chmod", "+x", "./utils/wait-for-it.sh"]

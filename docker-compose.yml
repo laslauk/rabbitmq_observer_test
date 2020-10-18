@@ -53,6 +53,7 @@ services:
 
     volumes:
       - datavolume:/usr/src/app/
+      - /httpserv/node_modules
 
 
 

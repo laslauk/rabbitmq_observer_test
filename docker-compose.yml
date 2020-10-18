@@ -14,6 +14,8 @@ services:
   orig:
     depends_on:
       -  rapid-runner-rabbit
+      -  obse
+      -  orig
     command: ["node", "main.js"]
     build:
       dockerfile: Dockerfile

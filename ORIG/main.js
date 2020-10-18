@@ -6,8 +6,6 @@ console.log("waiting 6 seconds before starting the sending..")
  // setTimeout(function() {
 
 
-
-
 amqp.connect('amqp://localhost', function(error0, connection) {
   if (error0) {
     throw error0;

@@ -28,7 +28,7 @@ amqp.connect('amqp://localhost', function(error0, connection) {
       channel.bindQueue(q.queue, exchange, key);
 
       channel.consume(q.queue, function(msg) {
-       console.log("Consumed a message:  from my.o - publishing to my.i")
+      console.log("Consumed a message:  from my.o - publishing to my.i")
 
 
        setTimeout(function() {

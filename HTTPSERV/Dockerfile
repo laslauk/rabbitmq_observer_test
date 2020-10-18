@@ -10,6 +10,6 @@ RUN npm install
 COPY . .
 
 EXPOSE 8894
-RUN ["chmod", "+x", "/usr/src/app/utils/wait-for-it.sh"]
+RUN ["chmod", "+x", "./utils/wait-for-it.sh"]
 ENTRYPOINT ["/bin/bash"]
 CMD [ "node", "index.js"  ]

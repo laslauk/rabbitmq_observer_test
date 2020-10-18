@@ -10,6 +10,6 @@ COPY package.json .
 RUN npm install
 
 COPY . .
-RUN ["chmod", "+x", "/usr/src/app/utils/wait-for-it.sh"]
+RUN ["chmod", "+x", "./utils/wait-for-it.sh"]
 ENTRYPOINT ["/bin/bash"]
 CMD [ "node", "obse.js"  ]

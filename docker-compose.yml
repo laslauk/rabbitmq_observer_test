@@ -44,7 +44,6 @@ services:
     build:
       dockerfile: Dockerfile
       context:  ./HTTPSERV
-
     ports:
       - "8080:8894"
 
@@ -69,4 +68,4 @@ networks:
   lassenet:
 
 volumes:
-    app-volume: 
+    data-volume: 

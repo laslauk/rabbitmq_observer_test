@@ -20,10 +20,12 @@ amqp.connect('amqp://localhost', function(error0, connection) {
     });
 
     while(true) {
+
+      setTimeout(function() {
       channel.publish(exchange, '', Buffer.from(msg));
       console.log(" [x] Sent %s", msg);
-      sleep(3000);
-     }
+    
+     }, 3000);
 
   });
 
@@ -35,9 +37,3 @@ amqp.connect('amqp://localhost', function(error0, connection) {
   }, 500);
 });
 
-await sleep(1000)
-function sleep(ms) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
-} 

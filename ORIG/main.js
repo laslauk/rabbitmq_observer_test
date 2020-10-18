@@ -6,39 +6,42 @@ amqp.connect('amqp://localhost', function(error0, connection) {
   if (error0) {
     throw error0;
   }
-
-
   connection.createChannel(function(error1, channel) {
     if (error1) {
       throw error1;
     }
-    var exchange = 'topic';
-   
+    var exchange = 'topic_logs';
 
-    channel.assertExchange(exchange, 'fanout', {
+    var key = 'my.o';
+
+
+    channel.assertExchange(exchange, 'topic', {
       durable: false
     });
 
     // TiMeOuT wItH JaVaScRipT :s
-    var i = 0, maxCount = 3;
+    var i = 0, maxCount = 2;
       function f() {
-        var msg = "MSG_" + (i+1);
-        channel.publish(exchange, '', Buffer.from(msg));
-        console.log(" [x] Sent %s", msg);
+
+        var msg = "MSG_ " + i;
+        channel.publish(exchange, key, Buffer.from(msg));
+        console.log(" [x] Sent %s:'%s'", key, msg);
         i++;
+
         if (i < maxCount) {
           setTimeout(f, 3000);
-        } else {
 
+        } else {
           setTimeout(function() { 
             connection.close(); 
-            process.exit(0); 
+            process.exit(0) 
           }, 500);
-
         }
       }
 
     f();
+
+
   });
 
 

@@ -34,7 +34,9 @@ services:
     networks:
       - lassenet
     volumes:
-      - data-volume:/usr/src/app
+      # map local to remote folder, exclude node_modules
+      - ./OBSE:/usr/src/app
+      - /usr/src/app/node_modules
 
   httpserv:
 
@@ -68,4 +70,4 @@ networks:
   lassenet:
 
 volumes:
-    data-volume:
+    data-volume: 

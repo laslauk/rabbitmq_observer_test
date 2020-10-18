@@ -11,5 +11,4 @@ RUN npm install
 
 COPY . .
 
-ENTRYPOINT ["/bin/bash"]
 CMD [ "node", "main.js"  ]

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs')
-const path = './messages.txt'
+const path = '/usr/src/app/messages.txt'
 setTimeout(function () {
 try {
   fs.unlinkSync(path)
@@ -18,7 +18,7 @@ amqp.connect('amqp://rapid-runner-rabbit', function(error0, connection) {
   }
   connection.createChannel(function(error1, channel) {
     if (error1) {
-      throw error1; 
+      throw error1;  
     }
     var exchange = 'topic_logs';
 

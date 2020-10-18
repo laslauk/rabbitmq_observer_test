@@ -48,4 +48,4 @@ amqp.connect('amqp://rapid-runner-rabbit', function(error0, connection) {
   });
 });
 
- }, 40000);
+ }, 10000);

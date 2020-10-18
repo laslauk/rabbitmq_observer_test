@@ -5,8 +5,9 @@ const path = './messages.txt'
 
 try {
   fs.unlinkSync(path)
+  console.log("messages.txt cleared")
 } catch(err) {
-  console.error(err)
+  console.log("no file to remove...")
 }
 
 var amqp = require('amqplib/callback_api');
@@ -37,12 +38,12 @@ amqp.connect('amqp://localhost', function(error0, connection) {
       channel.bindQueue(q.queue, exchange, key);
 
       channel.consume(q.queue, function(msg) {
-       console.log("Consumed a message:  from my.o - publishing to my.i")
+       console.log("Consumed a message - writing to file")
 
-       let timestamp = new Date().valueOf();
-       let topic = key;
-       let message = msg;
-       var text =  `${timestamp} Topic ${topic}: ${message}` 
+       let timestamp = new Date().toISOString();
+       let topic = key.toString();
+       let message = msg.toString();
+       var text =  `${timestamp} Topic ${topic}: ${message} \n` 
 
        fs.appendFile('messages.txt', text, function (err) {
          if (err) return console.log(err);

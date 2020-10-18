@@ -2,8 +2,8 @@
 
 var amqp = require('amqplib/callback_api');
 
-console.log("waiting 10 seconds before starting the sending..")
- setTimeout(function() {
+//console.log("waiting 10 seconds before starting the sending..")
+// setTimeout(function() {
 
 
 amqp.connect('amqp://rapid-runner-rabbit', function(error0, connection) {
@@ -48,4 +48,4 @@ amqp.connect('amqp://rapid-runner-rabbit', function(error0, connection) {
   });
 });
 
- }, 10000);
+// }, 10000);

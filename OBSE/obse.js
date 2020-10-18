@@ -40,6 +40,7 @@ amqp.connect('amqp://localhost', function(error0, connection) {
       channel.consume(q.queue, function(msg) {
        console.log("Consumed a message - writing to file")
 
+       console.log(msg.content.toString().toString());
        let timestamp = new Date().toISOString();
        let topic = key.toString();
        let message = msg.content.toString();

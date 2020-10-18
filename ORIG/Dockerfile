@@ -18,6 +18,6 @@ RUN npm install
 # Bundle app source
 COPY . /usr/src/app
 
-RUN ["chmod", "+x", "./utils/wait-for-it.sh]
+RUN ["chmod", "+x", "./utils/wait-for-it.sh"]
 ENTRYPOINT ["/bin/bash"]
 CMD [ "node", "main.js"  ]

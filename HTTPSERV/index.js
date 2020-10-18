@@ -1,6 +1,6 @@
 var http = require('http');
 var address = 'http://127.0.0.1'
-var port = 8080;
+var port = 3000;
 const fs = require('fs');
 
 http.createServer(function (req, res) {
@@ -10,15 +10,16 @@ http.createServer(function (req, res) {
         if (err) {
             msg = err;
         } else {
-
-
         msg = data;
           }   
+
+          res.writeHead(200, {'Content-Type': 'text/html'});
+          res.write(msg);
+          res.end();
+
       });
 
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write(msg);
-    res.end();
+
     
 }).listen(port);
 console.log(`Server running at ${address}:${port}`);

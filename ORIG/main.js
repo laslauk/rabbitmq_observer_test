@@ -8,7 +8,7 @@ amqp.connect('amqp://localhost', function(error0, connection) {
   }
 
 
-  connection.createChannel(function(error1, channel) {
+  connection.createChannel(async function(error1, channel) {
     if (error1) {
       throw error1;
     }

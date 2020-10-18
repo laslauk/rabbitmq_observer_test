@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs')
-const path = './messages.txt'
+const path = './OBSE/messages.txt'
 
 try {
   fs.unlinkSync(path)

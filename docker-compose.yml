@@ -14,7 +14,7 @@ services:
   orig:
     depends_on:
       -  rapid-runner-rabbit
-    command: ["rapid-runner-rabbit:5672", "--",  "node", "main.js"]
+    command: ["node", "main.js"]
     build:
       dockerfile: Dockerfile
       context:  ./ORIG
@@ -24,7 +24,7 @@ services:
   obse:
     depends_on:
       -  rapid-runner-rabbit
-    command: ["rapid-runner-rabbit:5672", "--",  "node", "obse.js"]
+    command: ["node", "obse.js"]
     build:
       dockerfile: Dockerfile
       context:  ./ORIG
@@ -41,7 +41,7 @@ services:
     # work. Just uncomment them
     depends_on:
       -  rapid-runner-rabbit
-    command: ["rapid-runner-rabbit:5672", "--",  "node", "index.js"]
+    command: ["node", "index.js"]
     build:
       dockerfile: Dockerfile
       context:  ./HTTPSERV
@@ -70,7 +70,7 @@ services:
   imed:
     depends_on:
       -  rapid-runner-rabbit
-    command: [ "rapid-runner-rabbit:5672", "--",  "node", "index.js"]
+    command: ["node", "index.js"]
     build:
       dockerfile: Dockerfile
       context:  ./IMED

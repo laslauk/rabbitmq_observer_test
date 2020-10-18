@@ -2,6 +2,12 @@
 
 var amqp = require('amqplib/callback_api');
 
+console.log("waiting 6 seconds before starting the sending..")
+ // setTimeout(function() {
+
+
+
+
 amqp.connect('amqp://localhost', function(error0, connection) {
   if (error0) {
     throw error0;
@@ -11,7 +17,6 @@ amqp.connect('amqp://localhost', function(error0, connection) {
       throw error1;
     }
     var exchange = 'topic_logs';
-
     var key = 'my.o';
 
 
@@ -20,10 +25,10 @@ amqp.connect('amqp://localhost', function(error0, connection) {
     });
 
     // TiMeOuT wItH JaVaScRipT :s
-    var i = 0, maxCount = 2;
+    var i = 0, maxCount = 3;
       function f() {
 
-        var msg = "MSG_ " + i;
+        var msg = "MSG_ " + (i+1);
         channel.publish(exchange, key, Buffer.from(msg));
         console.log(" [x] Sent %s:'%s'", key, msg);
         i++;
@@ -43,6 +48,6 @@ amqp.connect('amqp://localhost', function(error0, connection) {
 
 
   });
-
-
 });
+
+// });

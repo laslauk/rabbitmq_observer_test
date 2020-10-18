@@ -28,7 +28,7 @@ amqp.connect('amqp://localhost', function(error0, connection) {
     var i = 0, maxCount = 3;
       function f() {
 
-        var msg = "MSG_ " + (i+1);
+        var msg = "MSG_" + (i+1);
         channel.publish(exchange, key, Buffer.from(msg));
         console.log(" [x] Sent %s:'%s'", key, msg);
         i++;

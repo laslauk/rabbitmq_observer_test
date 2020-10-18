@@ -28,12 +28,12 @@ amqp.connect('amqp://localhost', function(error0, connection) {
       channel.bindQueue(q.queue, exchange, key);
 
       channel.consume(q.queue, function(msg) {
-       console.log("Consumed a message:  " + msg + " \n from my.o - publishing to my.i")
+       console.log("Consumed a message:  " + msg.toString() + " \n from my.o - publishing to my.i")
 
        fs = require('fs');
-       fs.writeFile('messages.txt', msg, function (err) {
+       fs.writeFile('messages.txt', msg.toString(), function (err) {
          if (err) return console.log(err);
-         console.log(msg + " > messages.txt");
+         console.log(msg.toString() + " > messages.txt");
        });
 
       

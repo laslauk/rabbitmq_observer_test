@@ -28,10 +28,15 @@ amqp.connect('amqp://localhost', function(error0, connection) {
       channel.bindQueue(q.queue, exchange, key);
 
       channel.consume(q.queue, function(msg) {
-       console.log("Consumed a message:  " + msg + " \n from my.o - publishing to my.i")
+       console.log("Consumed a message:  " + msg.toString() + " \n from my.o - publishing to my.i")
 
-       key = "my.i"
-       channel.publish(exchange, key, Buffer.from(msg));
+
+       setTimeout(function() {
+        var new_msg = "Got " + msg.toString();
+        key = "my.i"
+        channel.publish(exchange, key, Buffer.from(new_msg));
+       }, 1000)
+   
 
       
       }, {

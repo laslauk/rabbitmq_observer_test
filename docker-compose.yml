@@ -27,7 +27,7 @@ services:
   obse:
     depends_on:
       -  rapid-runner-rabbit
-    command: ["./utils/wait-for-it.sh", "-t", "30", "rapid-runner-rabbit:5672", "--","node", "obse.js"]
+    command: ["/usr/src/app/utils/wait-for-it.sh", "-t", "30", "rapid-runner-rabbit:5672", "--","node", "obse.js"]
     build:
       dockerfile: Dockerfile
       context:  ./OBSE
@@ -41,7 +41,7 @@ services:
 
     depends_on:
       -  rapid-runner-rabbit
-    command: ["./utils/wait-for-it.sh", "-t", "30", "rapid-runner-rabbit:5672", "--","node", "index.js"]
+    command: ["/usr/src/app/utils/wait-for-it.sh", "-t", "30", "rapid-runner-rabbit:5672", "--","node", "index.js"]
     build:
       dockerfile: Dockerfile
       context:  ./HTTPSERV

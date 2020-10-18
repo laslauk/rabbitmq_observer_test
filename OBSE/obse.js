@@ -2,7 +2,12 @@
 
 const fs = require('fs')
 const path = 'messages.txt'
-
+console.log(__dirname);
+fs.readdir(testFolder, (err, files) => {
+  files.forEach(file => {
+    console.log(file);
+  });
+});
 
 try {
   fs.unlinkSync(path)

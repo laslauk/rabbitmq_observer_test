@@ -5,7 +5,7 @@ var amqp = require('amqplib/callback_api');
 setTimeout(function() {
 
 
-amqp.connect('amqp://localhost', function(error0, connection) {
+amqp.connect('amqp://rapid-runner-rabbit', function(error0, connection) {
   if (error0) {
     throw error0;
   }

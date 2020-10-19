@@ -1,0 +1,14 @@
+
+The system will wait for some time before sending, had some trouble with syncing up. THats why i tried to use the wait-for-it.sh utility but im not sure if it works correctly.
+
+
+With message broker, its relatively easy to send messages and rely on the asynchronosity handled by the message broker. Its also relatively easy to
+use the subscriber / observer model to listen the bus for messages, with HTTP, it would be a messy to start sending messages to different addresses and handling 
+the responses. Its easier to handle internal communication with message broker between multiple applications for in example this docker environment, it would've been quite a
+messy commuincation with having to responding and waiting and so on if not for subscribe/observer model to the message bus.
+
+My main learnings:
+I learned the basics of the message broker rabbit mq with topics.
+I had a lot of trouble with the volume and paths but I eventually learned how to use them (hopefully). Since I used the volume path
+for installing node packages without knowing that it overrode the other containers data. Im still having some trouble how addresses and paths should be set up
+in docker environment, for example I spent some time to figure out that the addresses sometimes should be the name of the docker container.

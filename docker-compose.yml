@@ -4,7 +4,7 @@ version: "3"
 
 services:
 
-  
+  # Message Broker RabbitMQ
   rapid-runner-rabbit:
     image: rabbitmq:3-management
     expose:
@@ -12,6 +12,7 @@ services:
     networks:
       - lassenet
 
+  # Original Message my.o sender
   orig:
     depends_on:
       -  rapid-runner-rabbit
@@ -24,6 +25,7 @@ services:
     networks:
       - lassenet
 
+  # Observer that writes to the volume
   obse:
     depends_on:
       -  rapid-runner-rabbit
@@ -36,9 +38,8 @@ services:
     volumes:
       - datavolume:/usr/src/app/
 
-
+  # HTTP server that retusn the conent in shared volume /usr/src/app/messages.txt
   httpserv:
-
     depends_on:
       -  rapid-runner-rabbit
     command: ["/usr/src/app/utils/wait-for-it.sh", "-t", "30", "rapid-runner-rabbit:5672", "--","node", "index.js"]
@@ -54,8 +55,7 @@ services:
     volumes:
       - datavolume:/usr/src/app/
 
-
-
+  # IMED Listens to the channel and observers the my.o and sends its own my.i
   imed:
     depends_on:
       -  rapid-runner-rabbit
@@ -68,6 +68,6 @@ services:
 
 networks:
   lassenet:
-
+    
 volumes:
   datavolume:

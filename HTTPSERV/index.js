@@ -9,7 +9,7 @@ const fs = require('fs');
 
 http.createServer(function (req, res) {
 
-    fs.readFile('messages.txt', 'utf8', function (err,data) {
+    fs.readFile('/usr/src/app/messages.txt', 'utf8', function (err,data) {
         let msg = "";
         if (err) {
             msg = err;
